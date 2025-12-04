@@ -1,11 +1,10 @@
 "use client"
-import { Car } from "@prisma/client";
 import { ListCarsProps } from "./ListCars.types";
 import Image from "next/image";
 import { Fuel, Gauge, Gem, Trash, Upload, Users, Wrench , Heart} from "lucide-react";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 import { useLovedCars } from "@/hooks/use-loved-cars";
-import { add } from "date-fns";
+
 
 
 export default function ListCars(props:ListCarsProps) {

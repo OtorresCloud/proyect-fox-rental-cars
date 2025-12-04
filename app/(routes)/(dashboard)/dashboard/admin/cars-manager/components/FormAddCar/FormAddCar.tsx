@@ -7,7 +7,10 @@ import { z } from "zod"
 import {
     Form,
     FormControl,
+<<<<<<< HEAD
     FormDescription,
+=======
+>>>>>>> 3ba50524dfbe659fb18c2466c9d02593ccac00ce
     FormField,
     FormItem,
     FormLabel,
@@ -17,7 +20,10 @@ import {
 import { Input } from "@/components/ui/input"
 import { formSchema } from "./FormAddCar.form"
 import { Select, SelectContent, SelectItem, SelectValue,} from "@/components/ui/select"
+<<<<<<< HEAD
 import { log } from "console"
+=======
+>>>>>>> 3ba50524dfbe659fb18c2466c9d02593ccac00ce
 import { SelectTrigger } from "@/components/ui/select"
 import { useState } from "react"
 import { UploadButton } from "@/utils/uploadthing";
