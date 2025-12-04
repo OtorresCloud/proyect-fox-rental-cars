@@ -3,20 +3,16 @@ import { Car } from "@prisma/client";
 import { ListCarsProps } from "./ListCars.types";
 import Image from "next/image";
 import { Fuel, Gauge, Gem, Trash, Upload, Users, Wrench , Heart} from "lucide-react";
-//import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
-//import { useLovedCars } from "@/hooks/use-loved-cars";
-//import { add } from "date-fns";
+import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
+import { useLovedCars } from "@/hooks/use-loved-cars";
 
 
 export default function ListCars(props:ListCarsProps) {
     const { cars } = props;
-    {/*const {addLovedItem, lovedItems, removeLovedItem} = useLovedCars()*/}
+    const {addLovedItem, lovedItems, removeLovedItem} = useLovedCars()
 
 
-    /*console.log(lovedItems);/*
-   Esto es un comentario
-   de varias líneas
-
+    console.log(lovedItems);
     return<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {cars.map((car) => {
                 const {
@@ -82,7 +78,7 @@ export default function ListCars(props:ListCarsProps) {
 
                     {/* Botones */}
                     <div className="mt-1 flex justify-between items-center gap-2">
-                       {/* <ModalAddReservation car={car} /> */}
+                        <ModalAddReservation car={car} />
                         <Heart 
                         className={`cursor-pointer flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 hover:text-red-500 transition ${likedCar ? "fill-red-500 text-red-500" : ""}`}
                         onClick={() => addLovedItem(car)} 
@@ -96,4 +92,3 @@ export default function ListCars(props:ListCarsProps) {
 
     
 }
- */
