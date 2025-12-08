@@ -1,4 +1,5 @@
 "use client"
+import "date-fns/locale/es"; // Importar locale español
 import { CalendarIcon } from "lucide-react";
 import { addDays, format } from "date-fns";
 import { DateRange } from "react-day-picker";
@@ -9,10 +10,13 @@ import { CalendarSelectorProps } from "./CalendarSelector.types";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
+// Constante para el límite de días (puedes cambiarla fácilmente)
+const MAX_DAYS_IN_ADVANCE = 90;
+
 export function CalendarSelector(props: CalendarSelectorProps) {
     const { setDateSelected, className, carPriceDay } = props
     const [date, setDate] = useState<DateRange | undefined>({
-        from: new Date,
+        from: new Date(),
         to: addDays(new Date(), 5)
     })
     
@@ -31,6 +35,17 @@ export function CalendarSelector(props: CalendarSelectorProps) {
     };
     
     const DaysBetween = date?.from && date?.to ? calculateDaysBetween(date.from, date.to) : 0;
+    
+    // Función para deshabilitar fechas pasadas y fechas muy lejanas en el futuro
+    const disableInvalidDates = (date: Date) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const maxDate = addDays(today, MAX_DAYS_IN_ADVANCE);
+        
+        // Deshabilitar si es antes de hoy O después del límite máximo
+        return date < today || date > maxDate;
+    };
     
     return (
         <div className={cn("grid gap-2", className)}>
@@ -77,7 +92,7 @@ export function CalendarSelector(props: CalendarSelectorProps) {
                     side="bottom"
                     sideOffset={4}
                     avoidCollisions={false}
-                    >
+                >
                     <Calendar 
                         initialFocus
                         mode="range"
@@ -86,6 +101,7 @@ export function CalendarSelector(props: CalendarSelectorProps) {
                         onSelect={setDate}
                         numberOfMonths={2}
                         className="text-xs"
+                        disabled={disableInvalidDates}
                     />
                 </PopoverContent>
             </Popover>

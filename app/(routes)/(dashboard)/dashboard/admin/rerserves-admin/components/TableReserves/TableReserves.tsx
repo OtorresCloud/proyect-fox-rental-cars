@@ -11,7 +11,6 @@ import {
 
 import { TableReservesProps } from "./TableReserves.types";
 import { formatPrice } from "@/lib/formatPrice";
-import { format } from "path";
 
 export default function TableReserves(props: TableReservesProps) {
     const {orders} =props
