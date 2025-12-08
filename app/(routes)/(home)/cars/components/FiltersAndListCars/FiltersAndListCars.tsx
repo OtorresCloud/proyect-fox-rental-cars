@@ -1,74 +1,96 @@
 "use client"
-import {Car} from "@prisma/client"
-import { useEffect, useState } from "react";
-import { FiltersAndListCarsProps } from "./FiltersAndListCars.types";
-import { ListCars } from "../ListCars";
-import { FiltersCars } from "../FilterCars";
+import { Car } from "@prisma/client"
+import { useEffect, useState } from "react"
+import { FiltersAndListCarsProps } from "./FiltersAndListCars.types"
+import { ListCars } from "../ListCars"
+import { FiltersCars } from "../FilterCars"
 
-export  function FiltersAndListCars(props: FiltersAndListCarsProps) {
-    const {cars} = props
-    const [filteredCars, setFilteredCars] = useState<Car[]>([]);
-    const [filters, setFilters] = useState({
-        type: "",
-        transmission: "",
-        engine: "",
-        people: "",
-    });
+export function FiltersAndListCars(props: FiltersAndListCarsProps) {
+  const { cars } = props
 
-    useEffect(() => {
-        let filtered = cars;
+  const [filteredCars, setFilteredCars] = useState<Car[]>([])
+  const [filters, setFilters] = useState({
+    type: "",
+    transmission: "",
+    engine: "",
+    people: "",
+    priceDayMin: "",
+    priceDayMax: "",
+  })
 
-        if (filters.type) {
-            filtered = filtered.filter((car) =>
-                car.type.toLowerCase().includes(filters.type.toLowerCase())
-            );
-        }
+  useEffect(() => {
+    let filtered = [...cars]
 
-        if (filters.transmission) {
-            filtered = filtered.filter((car) =>
-                car.transmission.toLowerCase().includes(filters.transmission.toLowerCase())
-            );
-        }
-        
-        if (filters.engine) {
-            filtered = filtered.filter((car) =>
-                car.engine.toLowerCase().includes(filters.engine.toLowerCase())
-            );
-        }
-        
-        if (filters.people) {
-            filtered = filtered.filter((car) =>
-                car.people.toLowerCase().includes(filters.people.toLowerCase())
-            );
-        }
-
-        setFilteredCars(filtered);
-    }, [cars, filters]); // ✅ Usa el objeto filters completo
-
-    const handleFilterChange = (filterName: string, filterValue: string) => {
-        setFilters((prevFilters) => ({
-            ...prevFilters,
-            [filterName]: filterValue
-        }))
+    if (filters.type) {
+      filtered = filtered.filter((car) =>
+        car.type.toLowerCase().includes(filters.type.toLowerCase())
+      )
     }
 
-    const clearFilters = () => {
-        setFilters({
-            type: "",
-            transmission: "",
-            engine: "",
-            people: "",
-        });
+    if (filters.transmission) {
+      filtered = filtered.filter((car) =>
+        car.transmission
+          .toLowerCase()
+          .includes(filters.transmission.toLowerCase())
+      )
     }
 
-    return (
-        <div>
-            <FiltersCars
-                setFilters={handleFilterChange}
-                filters={filters}
-                clearFilters={clearFilters}
-            />
-            <ListCars cars={filteredCars}/>
-        </div>
-    )
+    if (filters.engine) {
+      filtered = filtered.filter((car) =>
+        car.engine.toLowerCase().includes(filters.engine.toLowerCase())
+      )
+    }
+
+    if (filters.people) {
+      filtered = filtered.filter(
+        (car) => String(car.people) === filters.people
+      )
+    }
+
+    const min =
+      filters.priceDayMin && !Number.isNaN(Number(filters.priceDayMin))
+        ? Number(filters.priceDayMin)
+        : 0
+
+    const max =
+      filters.priceDayMax && !Number.isNaN(Number(filters.priceDayMax))
+        ? Number(filters.priceDayMax)
+        : Infinity
+
+    filtered = filtered.filter((car) => {
+      const price = Number(car.priceDay)
+      return price >= min && price <= max
+    })
+
+    setFilteredCars(filtered)
+  }, [cars, filters])
+
+  const handleFilterChange = (filterName: string, filterValue: string) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterName]: filterValue,
+    }))
+  }
+
+  const clearFilters = () => {
+    setFilters({
+      type: "",
+      transmission: "",
+      engine: "",
+      people: "",
+      priceDayMin: "",
+      priceDayMax: "",
+    })
+  }
+
+  return (
+    <div>
+      <FiltersCars
+        setFilters={handleFilterChange}
+        filters={filters}
+        clearFilters={clearFilters}
+      />
+      <ListCars cars={filteredCars} />
+    </div>
+  )
 }
