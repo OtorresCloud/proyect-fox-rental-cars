@@ -1,5 +1,5 @@
-import { Car } from "@prisma/client"
-export type FiltersAndListCarsProps = {
+import { Car } from "@prisma/client";
 
-    cars: Car[]
+export type FiltersAndListCarsProps = {
+  cars: Car[];
 };
