@@ -3,6 +3,8 @@ import {db} from "@/lib/db";
 import { FiltersAndListCars } from "./components/FiltersAndListCars";
 import { HeaderCars } from "./components/HeaderCars";
 
+
+
 export default async function pageCars (){
     const cars = await db.car.findMany({
         where : {

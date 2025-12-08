@@ -3,7 +3,7 @@ import {Car} from "@prisma/client"
 import { useEffect, useState } from "react";
 import { FiltersAndListCarsProps } from "./FiltersAndListCars.types";
 import { ListCars } from "../ListCars";
-import { FiltersCars } from "../FiltersCars";
+import { FiltersCars } from "../FilterCars";
 
 export  function FiltersAndListCars(props: FiltersAndListCarsProps) {
     const {cars} = props
