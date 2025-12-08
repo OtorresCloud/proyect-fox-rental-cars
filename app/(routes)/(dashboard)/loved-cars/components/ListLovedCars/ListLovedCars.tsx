@@ -1,34 +1,31 @@
 "use client"
-import { Car } from "@prisma/client";
-import { ListCarsProps } from "./ListCars.types";
+import { useLovedCars } from "@/hooks/use-loved-cars"
+import { Car } from "@prisma/client"
+import { Fuel, Gauge, Gem, Heart, Trash, Upload, User, Users, Wrench } from "lucide-react";
 import Image from "next/image";
-import { Fuel, Gauge, Gem, Trash, Upload, Users, Wrench , Heart} from "lucide-react";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
-import { useLovedCars } from "@/hooks/use-loved-cars";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
-
-export default function ListCars(props:ListCarsProps) {
-    const { cars } = props;
-    const {addLovedItem, lovedItems, removeLovedItem} = useLovedCars()
-
-
-   console.log(lovedItems);
-    return<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {cars.map((car) => {
-                const {
-                priceDay,
-                photo,
-                cv,
-                engine,
-                id,
-                people,
-                name,
-                transmission,
-                type,
-                } = car;
-                const likedCar = lovedItems.some((item) => item.id == car.id);
-
-                return (
+export function ListLovedCars() {
+    const {lovedItems, removeLovedItem} = useLovedCars()
+    return (
+        <>
+        {lovedItems.length == 0 ? (
+                    <div className="p-6 mx-auto max-w-7xl">
+                        <div className="flex flex-col items-center justify-center gap-4 text-center">
+                        <h1 className="text-2xl">Aún no tienes coches favoritos </h1>
+            
+                        <Link href="/">
+                            <Button>Volver a ver los productos</Button>
+                        </Link>
+                        </div>
+                    </div>
+        ): (
+            <div className=" grid grid-cols-2 gap-6 lg:grd-cols-4">
+                {lovedItems.map((car: Car)=>{
+                    const{priceDay, photo, name, type, transmission,people,id,engine,cv} = car
+                    return (
                 <div
                     key={id}
                     className="rounded-xl shadow-md hover:shadow-lg bg-white overflow-hidden flex flex-col"
@@ -78,18 +75,20 @@ export default function ListCars(props:ListCarsProps) {
 
                     {/* Botones */}
                     <div className="mt-1 flex justify-between items-center gap-2">
-                       {/* <ModalAddReservation car={car} /> */}
+                        <ModalAddReservation car={car} />
                         <Heart 
-                        className={`cursor-pointer flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 hover:text-red-500 transition ${likedCar ? "fill-red-500 text-red-500" : ""}`}
-                        onClick={() => addLovedItem(car)} 
+                        className={`cursor-pointer  w-5 h-5 sm:w-6 sm:h-6 fill-red-500 text-red-500 `}
+                        onClick={() => removeLovedItem(car.id)} 
                         />
                     </div>
                     </div>
                 </div>
-                );
-            })}
-</div>
+                    )
+                })}
 
-    
+            </div>
+        )}
+        </>
+    )
 }
- 
+
