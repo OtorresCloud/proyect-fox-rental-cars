@@ -51,3 +51,40 @@ export async function POST(req: Request, { params }: {
             }
 
         }]
+
+    const order = await db.order.create({
+        data: {
+            carId,
+            carName: carName,
+            userId: userId,
+            status: "confirmed",
+            totalAmount: totalAmount.toString(),
+            orderDate: startDate,
+            orderEndDate: endDate
+        },
+    });
+
+    const session = await stripe.checkout.sessions.create({
+        line_items,
+        mode: "payment",
+        billing_address_collection: "required",
+        phone_number_collection: {
+            enabled: true,
+
+        },
+        success_url: `${process.env.NEXT_PUBLIC_FRONTEND_STORE_URL}/order-confirmation`,
+        cancel_url: `${process.env.NEXT_PUBLIC_FRONTEND_STORE_URL}/order-error`,
+
+        metadata: {
+            orderId: order.id,
+            carId: carId,
+            startDate,
+            endDate,
+            numberOfDays
+        }
+    })
+
+    return NextResponse.json({ url: session.url }, {
+        headers: corsHeaders
+    })
+}
