@@ -16,7 +16,7 @@ import { Trash } from "lucide-react"
 import { Slider } from "@/components/ui/slider"
 
 const minValue = 0
-const maxValue = 1000 
+const maxValue = 1000
 
 export function FiltersCars(props: FiltersCarsProps) {
   const { clearFilters, setFilters, filters } = props
@@ -32,6 +32,13 @@ export function FiltersCars(props: FiltersCarsProps) {
     setFilters(filter, value)
   }
 
+  const handleClearFilters = () => {
+    clearFilters()
+    setPriceRange([minValue, maxValue])
+    handleFilter("priceDayMin", "")
+    handleFilter("priceDayMax", "")
+  }
+
   return (
     <div
       className="
@@ -41,6 +48,7 @@ export function FiltersCars(props: FiltersCarsProps) {
         lg:grid-cols-5
         gap-4
         items-end
+        px-4
       "
     >
       <Select
@@ -111,8 +119,7 @@ export function FiltersCars(props: FiltersCarsProps) {
         </SelectContent>
       </Select>
 
-      
-      <div className="flex flex-col gap-1">
+      <div className="w-full mt-2 rounded-md bg-background px-3 py-2 space-y-2">
         <div className="flex items-center justify-between text-xs font-medium text-muted-foreground">
           <span>Precio por día</span>
           <span className="text-[11px] font-semibold text-foreground">
@@ -138,11 +145,10 @@ export function FiltersCars(props: FiltersCarsProps) {
           <span>Máx: S/ {maxValue}</span>
         </div>
       </div>
-
-    
       <Button
-        onClick={clearFilters}
-        className="w-full flex justify-center sm:col-span-2 lg:col-span-5 mt-2 lg:mt-0"
+        size="sm"
+        onClick={handleClearFilters}
+        className="ml-auto flex justify-center sm:col-span-2 lg:col-span-5 mt-2 lg:mt-0"
       >
         Limpiar <Trash className="w-4 h-4 ml-2" />
       </Button>
