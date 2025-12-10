@@ -14,6 +14,7 @@ export function NavBar() {
         <div className="w-full py-4 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+                    
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-x-2 shrink-0 order-1 sm:order-none">
                         <Image 
@@ -28,26 +29,39 @@ export function NavBar() {
                         </span>
                     </Link>
                 
-                    {/* User Actions - Right side */}
+                    {/* User Actions */}
                     <div className="flex items-center gap-3 sm:gap-4 order-2 sm:order-none">
+
+                        {/* 🔥 NUEVO BOTÓN INICIO */}
+                        <Link 
+                            href="/" 
+                            className="hover:text-gray-600 transition whitespace-nowrap text-xs sm:text-sm md:text-base px-2 py-1"
+                        >
+                            Inicio
+                        </Link>
+
                         <Link 
                             href="/cars" 
                             className="hover:text-gray-600 transition whitespace-nowrap text-xs sm:text-sm md:text-base px-2 py-1"
                         >
                             Autos Disponibles
                         </Link>
+
                         <Link 
                             href="/dashboard" 
                             className="hover:text-gray-600 transition whitespace-nowrap text-xs sm:text-sm md:text-base px-2 py-1"
                         >
                             Mi Garage
                         </Link>
+
                         {userId ? (
                             <>
                                 <Link href="/loved-cars" className="flex items-center">
                                     <Heart 
                                         strokeWidth={1} 
-                                        className={`cursor-pointer flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 hover:text-red-500 transition ${lovedItems.length > 0  && "fill-red-500 text-red-500"}`}
+                                        className={`cursor-pointer flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 hover:text-red-500 transition ${
+                                            lovedItems.length > 0 && "fill-red-500 text-red-500"
+                                        }`}
                                     />
                                 </Link>
                                 <div className="scale-75 sm:scale-90 md:scale-100">

@@ -1,3 +1,5 @@
+"use client"
+
 import {
     Sheet,
     SheetContent,
@@ -6,27 +8,35 @@ import {
 import { Menu } from "lucide-react"
 import SidebarRoutes from "../SidebarRoutes/SidebarRoutes"
 import { UserButton } from "@clerk/nextjs"
+import Link from "next/link"
 
-
-export  function NavbarDashboard() {
+export function NavbarDashboard() {
     return (
-    <nav className=" flex items-center justify-between  w-full h-20  px-2 border-b gap-x-4 md:px-6 bg-background">
-        <div className="blockk xl:hidden">
-        <Sheet>
-            <SheetTrigger className="flex items-center"> 
-                <Menu/> 
-            </SheetTrigger>
-            <SheetContent side= "left">
-                <SidebarRoutes/>
-            </SheetContent>
-        </Sheet>
+        <nav className="flex items-center justify-between w-full h-20 px-4 border-b gap-x-4 bg-background">
 
-        </div>
+            {/* IZQUIERDA: solo el menú */}
+            <div className="block xl:hidden">
+                <Sheet>
+                    <SheetTrigger className="flex items-center">
+                        <Menu size={22} />
+                    </SheetTrigger>
+                    <SheetContent side="left">
+                        <SidebarRoutes />
+                    </SheetContent>
+                </Sheet>
+            </div>
 
-        <div className=" flex items-center justify-end  w-full gap-x-2">
-            <UserButton />
-        </div>
-    </nav>
+            {/* DERECHA: Inicio + UserButton */}
+            <div className="flex items-center gap-6 ml-auto">
+                <Link
+                    href="/"
+                    className="text-sm font-medium hover:opacity-80 transition"
+                >
+                    Inicio
+                </Link>
+
+                <UserButton />
+            </div>
+        </nav>
     )
-}
-
+};
