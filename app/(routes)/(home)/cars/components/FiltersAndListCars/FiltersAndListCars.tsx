@@ -3,25 +3,26 @@ import {Car} from "@prisma/client"
 import { useEffect, useState } from "react";
 import { FiltersAndListCarsProps } from "./FiltersAndListCars.types";
 import { ListCars } from "../ListCars";
-import { FiltersCars } from "../FilterCars";
 import SearchCars from "../SearchCars/SearchCars";
+import { FiltersCars } from "../FilterCars";
 
 export function FiltersAndListCars(props: FiltersAndListCarsProps) {
-    const { cars } = props
+    const { cars } = props;
 
-    const [search, setSearch] = useState("")
+    const [search, setSearch] = useState("");
     const [filteredCars, setFilteredCars] = useState<Car[]>([]);
+
     const [filters, setFilters] = useState({
         type: "",
         transmission: "",
         engine: "",
         people: "",
+        priceRange: [0, 1000] as number[],  // ⭐ nuevo
     });
 
     useEffect(() => {
         let filtered = cars;
 
-        // 🔎 Search
         if (search) {
             filtered = filtered.filter((car) =>
                 car.name.toLowerCase().includes(search.toLowerCase())
@@ -39,28 +40,39 @@ export function FiltersAndListCars(props: FiltersAndListCarsProps) {
                 car.transmission.toLowerCase().includes(filters.transmission.toLowerCase())
             );
         }
-        
+
         if (filters.engine) {
             filtered = filtered.filter((car) =>
                 car.engine.toLowerCase().includes(filters.engine.toLowerCase())
             );
         }
-        
+
         if (filters.people) {
             filtered = filtered.filter((car) =>
                 car.people.toLowerCase().includes(filters.people.toLowerCase())
             );
         }
 
-        setFilteredCars(filtered);
-    }, [cars, filters, search]); // 👈 added 'search'
+        // ⭐ Filtro de precio
+        const [min, max] = filters.priceRange;
 
-    const handleFilterChange = (filterName: string, filterValue: string) => {
+        filtered = filtered.filter((car) => {
+          const price = Number(car.priceDay);  // Convertir STRING -> NUMBER
+            return price >= min && price <= max;
+        });
+        
+        setFilteredCars(filtered);
+    }, [cars, filters, search]);
+
+    const handleFilterChange = (
+        filterName: string,
+        filterValue: string | number[]
+    ) => {
         setFilters((prevFilters) => ({
             ...prevFilters,
             [filterName]: filterValue
-        }))
-    }
+        }));
+    };
 
     const clearFilters = () => {
         setFilters({
@@ -68,26 +80,24 @@ export function FiltersAndListCars(props: FiltersAndListCarsProps) {
             transmission: "",
             engine: "",
             people: "",
+            priceRange: [0, 1000], // ⭐ reset price
         });
-        setSearch("") // 👈 limpiar el search también
-    }
+        setSearch("");
+    };
 
-        return (
+    return (
         <div className="space-y-6">
-            
-            {/* CENTRAR BARRA DE BÚSQUEDA */}
             <div className="w-full flex justify-center">
-            <SearchCars search={search} setSearch={setSearch} />
+                <SearchCars search={search} setSearch={setSearch} />
             </div>
 
             <FiltersCars
-            setFilters={handleFilterChange}
-            filters={filters}
-            clearFilters={clearFilters}
+                setFilters={handleFilterChange}
+                filters={filters}
+                clearFilters={clearFilters}
             />
 
             <ListCars cars={filteredCars} />
         </div>
-);
-
+    );
 }
