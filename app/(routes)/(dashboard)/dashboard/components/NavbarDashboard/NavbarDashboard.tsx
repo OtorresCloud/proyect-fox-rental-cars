@@ -12,9 +12,8 @@ import Link from "next/link"
 
 export function NavbarDashboard() {
     return (
-        <nav className="flex items-center justify-between w-full h-20 px-4 border-b gap-x-4 bg-background">
-
-            {/* IZQUIERDA: solo el menú */}
+        <nav className="sticky top-0 z-40 flex items-center justify-between w-full h-20 px-4 border-b gap-x-4 bg-background">
+            {/* IZQUIERDA: solo el menú (mobile) */}
             <div className="block xl:hidden">
                 <Sheet>
                     <SheetTrigger className="flex items-center">
@@ -25,7 +24,6 @@ export function NavbarDashboard() {
                     </SheetContent>
                 </Sheet>
             </div>
-
             {/* DERECHA: Inicio + UserButton */}
             <div className="flex items-center gap-6 ml-auto">
                 <Link
@@ -34,9 +32,9 @@ export function NavbarDashboard() {
                 >
                     Inicio
                 </Link>
-
                 <UserButton />
             </div>
+
         </nav>
     )
 };

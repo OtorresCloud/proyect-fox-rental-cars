@@ -11,7 +11,7 @@ export function NavBar() {
     const {lovedItems} = useLovedCars()
 
     return (
-        <div className="w-full py-4 px-4 sm:px-6 lg:px-8">
+        <div className="sticky top-0 z-50 w-full py-4 px-4 sm:px-6 lg:px-8 bg-background border-b">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
                     
@@ -39,21 +39,18 @@ export function NavBar() {
                         >
                             Inicio
                         </Link>
-
                         <Link 
                             href="/cars" 
                             className="hover:text-gray-600 transition whitespace-nowrap text-xs sm:text-sm md:text-base px-2 py-1"
                         >
                             Autos Disponibles
                         </Link>
-
                         <Link 
                             href="/dashboard" 
                             className="hover:text-gray-600 transition whitespace-nowrap text-xs sm:text-sm md:text-base px-2 py-1"
                         >
                             Mi Garage
                         </Link>
-
                         {userId ? (
                             <>
                                 <Link href="/loved-cars" className="flex items-center">

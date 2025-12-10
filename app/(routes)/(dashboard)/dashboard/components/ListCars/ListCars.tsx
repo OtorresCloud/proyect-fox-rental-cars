@@ -78,7 +78,7 @@ export default function ListCars(props:ListCarsProps) {
 
                     {/* Botones */}
                     <div className="mt-1 flex justify-between items-center gap-2">
-                       {/* <ModalAddReservation car={car} /> */}
+                        <ModalAddReservation car={car} /> 
                         <Heart 
                         className={`cursor-pointer flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 hover:text-red-500 transition ${likedCar ? "fill-red-500 text-red-500" : ""}`}
                         onClick={() => addLovedItem(car)} 
