@@ -5,6 +5,7 @@ import { useAuth, UserButton } from "@clerk/nextjs"
 import { Heart, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/providers/theme-toogle";
 
 export function NavBar() {
     const {userId} = useAuth();
@@ -50,6 +51,7 @@ export function NavBar() {
                             className="hover:text-gray-600 transition whitespace-nowrap text-xs sm:text-sm md:text-base px-2 py-1"
                         >
                             Mi Garage
+                            <ThemeToggle />
                         </Link>
                         {userId ? (
                             <>
