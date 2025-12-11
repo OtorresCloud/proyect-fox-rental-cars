@@ -4,18 +4,27 @@ import { SliderBrands } from "./components/SliderBrands";
 import { Features } from "./components/Features";
 import { OurFleet } from "./components/OurFleet";
 import { DriveToday } from "./components/DriveToday";
-
+import { Footer } from "./components/Footer/Footer";
 
 
 export default function Home() {
     return(
       <div>
       <NavBar/>
-      <FirtsBlock/>
+      <div id="inicio">
+        <FirtsBlock/>
+      </div>
       <SliderBrands/>
-      <Features/>
-      <OurFleet/>
-      <DriveToday/>
+      <div id="features">
+        <Features/>
+      </div>
+      <div id="fleet">
+        <OurFleet/>
+      </div>
+      <div id="contact">
+        <DriveToday/>
+      </div>
+      <Footer/>
       </div>
 
   );
