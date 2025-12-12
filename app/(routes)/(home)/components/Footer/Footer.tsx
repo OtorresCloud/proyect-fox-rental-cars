@@ -114,4 +114,88 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          
+          {/* Columna 4: Legal y Redes Sociales */}
+          <div>
+            <h3 className="text-black text-lg font-semibold mb-4">Legal</h3>
+            <ul className="space-y-2 mb-6">
+              <li>
+                <Link href="/terminos" className="text-sm hover:text-gray-600 transition-colors">
+                  Términos y Condiciones
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacidad" className="text-sm hover:text-gray-600 transition-colors">
+                  Política de Privacidad
+                </Link>
+              </li>
+              <li>
+                <Link href="/cancelacion" className="text-sm hover:text-gray-600 transition-colors">
+                  Política de Cancelación
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="text-sm hover:text-gray-600 transition-colors">
+                  Preguntas Frecuentes
+                </Link>
+              </li>
+            </ul>
+
+            {/* Redes Sociales */}
+            <h3 className="text-black text-lg font-semibold mb-4">Síguenos</h3>
+            <div className="flex gap-4">
+              <Link 
+                href="https://facebook.com" 
+                target="_blank"
+                className="hover:text-gray-600 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </Link>
+              <Link 
+                href="https://instagram.com" 
+                target="_blank"
+                className="hover:text-gray-600 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </Link>
+              <Link 
+                href="https://twitter.com" 
+                target="_blank"
+                className="hover:text-gray-600 transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
+              </Link>
+              <Link 
+                href="https://linkedin.com" 
+                target="_blank"
+                className="hover:text-gray-600 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Línea divisoria */}
+        <div className="border-t border-gray-300 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-center md:text-left">
+              © {new Date().getFullYear()} Fox Rental Cars. Todos los derechos reservados.
+            </p>
+            <div className="flex gap-4 text-sm">
+              <span>Aceptamos:</span>
+              <div className="flex gap-2">
+                <span className="px-2 py-1 bg-gray-200 rounded text-xs">VISA</span>
+                <span className="px-2 py-1 bg-gray-200 rounded text-xs">Mastercard</span>
+                <span className="px-2 py-1 bg-gray-200 rounded text-xs">PayPal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
