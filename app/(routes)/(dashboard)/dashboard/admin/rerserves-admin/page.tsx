@@ -19,7 +19,7 @@ export default async function pageReserversAdmin() {
         });
         
     return (
-        <div>
+        <div className="dark:bg-black">
             <h1 className="text-bl mb-4"> Todas las Reservas</h1>
             <TableReserves orders={order}/>
         </div>

@@ -23,13 +23,13 @@ export const dataAdminSidebar = [
     {
         icon: List,
         label: "Gestionar coches",
-        href: "dashboard/admin/cars-manager"
+        href: "/dashboard/admin/cars-manager"
     },
 
     {
         icon: Calendar,
         label: "Todas las Reservas",
-        href: "dashboard/admin/reservers"
+        href: "/dashboard/admin/rerserves-admin"
     },
 
 ]

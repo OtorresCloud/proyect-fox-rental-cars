@@ -14,12 +14,12 @@ export default async function pageCars (){
         },
     }); 
     return (
-        <div>
+        <div className="dark:bg-black">
             <NavBar/>
             <div className="p-6 mx-auto max-w-7xl">
                 <HeaderCars/>
             </div>
-            <div>
+            <div className="dark:bg-black">
                 <FiltersAndListCars cars={cars}/>
             </div>
         </div>

@@ -9,7 +9,7 @@ import { Footer } from "./components/Footer/Footer";
 
 export default function Home() {
     return(
-      <div>
+      <div className="min-h-screen bg-white dark:bg-black transition-colors">
       <NavBar/>
       <div id="inicio">
         <FirtsBlock/>

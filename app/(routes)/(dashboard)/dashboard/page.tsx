@@ -25,7 +25,7 @@ export default async function DashboardPage() {
 
     return (
     <div>
-        <div className=" flex justify-between">
+        <div className=" flex justify-between dark:bg-black">
             <h2 className="text-2xl font-bold"> Lista de Coches</h2>
         </div>
         <ListCars cars={cars}/>
