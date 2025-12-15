@@ -41,7 +41,7 @@ export function CardCar({ car }: CardCarProps) {
     };
 
     return (
-        <div className="relative bg-white dark:bg-gray-900 rounded-lg shadow-md hover:shadow-lg dark:shadow-gray-800/50 dark:hover:shadow-gray-700/50 flex flex-col min-h-[520px] border border-gray-200 dark:border-gray-800 transition-all">
+        <div className="relative rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-white/10 flex flex-col min-h-[520px] shadow-none transition-colors">
 
             {/* Imagen */}
             <div className="w-full h-56 bg-gray-50 dark:bg-gray-800 rounded-t-lg overflow-hidden transition-colors">
@@ -93,16 +93,17 @@ export function CardCar({ car }: CardCarProps) {
                 </div>
                 {/* Footer botones */}
                 <div className="mt-auto">
-                    <div className="flex justify-between gap-2 mb-3">
-                        <Button 
-                            variant="outline" 
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3">
+                        <Button
+                            variant="outline"
                             onClick={deleteCar}
-                            className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-700 hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-600 dark:hover:text-red-400 hover:border-red-300 dark:hover:border-red-800 transition-colors"
+                            className="w-full text-sm h-9 bg-white dark:bg-black text-gray-900 dark:text-white border-gray-300 dark:border-white/10 hover:bg-red-50 dark:hover:bg-red-950 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                         >
                             Eliminar <Trash className="w-4 h-4 ml-2" />
                         </Button>
-
+                    <div className="w-full">
                         <ButtonEditCar carData={car} />
+                    </div>
                     </div>
 
                     {/* Botón Publicar / No Publicar */}

@@ -13,7 +13,7 @@ export function NavBar() {
     const {lovedItems} = useLovedCars()
 
     return (
-        <div className="w-full py-4 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black transition-colors">
+        <div className="fixed top-0 left-0 right-0 z-50 w-full py-4 px-4 sm:px-6 lg:px-8 bg-white/85 dark:bg-black/70 backdrop-blur transition-colors">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
                     {/* Logo */}

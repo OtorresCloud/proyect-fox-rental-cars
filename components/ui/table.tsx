@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
-      data-slot="table-container"
-      className="relative w-full overflow-x-auto"
+    data-slot="table-container"
+    className="relative w-full overflow-x-auto rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-[#0b0b0b]"
     >
       <table
         data-slot="table"

@@ -13,15 +13,15 @@ import { formatPrice } from "@/lib/formatPrice";
 export default function TableReserves(props: TableReservesProps) {
     const{orders} = props;
     return (
-                    <Table>
+            <Table>
             <TableCaption>Lista de tus adquisicones.</TableCaption>
             <TableHeader>
                 <TableRow>
-                <TableHead>Coche</TableHead>
-                <TableHead>Fecha de inicio</TableHead>
-                <TableHead>Fecha de finalización</TableHead>
-                <TableHead>Estado</TableHead>
-                <TableHead className="text-right">Monto</TableHead>
+                <TableHead className="text-center">Coche</TableHead>
+                <TableHead className="text-center">Fecha de inicio</TableHead>
+                <TableHead className="text-center">Fecha de finalización</TableHead>
+                <TableHead className="text-center">Estado</TableHead>
+                <TableHead className="text-center">Monto</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>

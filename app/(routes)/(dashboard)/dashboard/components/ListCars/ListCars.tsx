@@ -7,7 +7,6 @@ import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 import { useLovedCars } from "@/hooks/use-loved-cars";
 
 
-
 export default function ListCars(props:ListCarsProps) {
     const { cars } = props;
     const {addLovedItem, lovedItems, removeLovedItem} = useLovedCars()
@@ -28,13 +27,20 @@ export default function ListCars(props:ListCarsProps) {
                     transmission,
                     type,
 
+
                 } = car;
                 const likedCar = lovedItems.some((item) => item.id == car.id);
 
                 return (
                     <div
                         key={id}
-                        className="rounded-xl shadow-md hover:shadow-lg dark:shadow-gray-800/50 dark:hover:shadow-gray-700/50 bg-white dark:bg-gray-900 overflow-hidden flex flex-col border border-gray-200 dark:border-gray-800 transition-all"
+                       className="rounded-xl
+bg-white dark:bg-black
+border border-gray-200 dark:border-white/10
+overflow-hidden flex flex-col
+shadow-none
+transition-colors"
+
                     >
                         {/* Imagen con badge de tipo */}
                         <div className="relative h-40 sm:h-48 w-full flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-850 transition-colors overflow-hidden">
@@ -69,7 +75,8 @@ export default function ListCars(props:ListCarsProps) {
                         
 
                         {/* Contenido */}
-                        <div className="p-3 sm:p-4 flex flex-col flex-1">
+                        <div className="p-3 sm:p-4 flex flex-col flex-1 bg-white dark:bg-black transition-colors">
+
                             {/* Título y precio */}
                             <div className="mb-3">
                                 <p className="text-lg sm:text-xl h-12 font-semibold line-clamp-2 text-gray-900 dark:text-white transition-colors">

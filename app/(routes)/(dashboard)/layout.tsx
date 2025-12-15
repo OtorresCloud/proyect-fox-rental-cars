@@ -10,7 +10,7 @@ return (
         </div>
         <div className="w-full h-full xl:ml-80">
         <NavbarDashboard/>
-        <div className="p-6 h-max">{children}</div>
+        <div className="p-6 pt-24 h-max">{children}</div>
         </div>
     </div>
 );

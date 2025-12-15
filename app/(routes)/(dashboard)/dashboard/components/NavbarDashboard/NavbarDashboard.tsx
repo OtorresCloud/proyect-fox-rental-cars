@@ -14,8 +14,9 @@
 
     export function NavbarDashboard() {
         return (
-            <nav className="sticky top-0 z-40 flex items-center justify-between w-full h-20 px-4 border-b gap-x-4  dark:bg-black">
-                {/* IZQUIERDA: solo el menú (mobile) */}
+            <nav className="sticky top-0 z-50 flex items-center justify-between w-full h-20 px-4 gap-x-4
+  bg-white dark:bg-black
+  border-b border-gray-200 dark:border-white/10">
                 <div className="block xl:hidden">
                     <Sheet>
                         <SheetTrigger className="flex items-center">

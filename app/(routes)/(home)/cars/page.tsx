@@ -16,7 +16,7 @@ export default async function pageCars (){
     return (
         <div className="dark:bg-black">
             <NavBar/>
-            <div className="p-6 mx-auto max-w-7xl">
+            <div className="p-6 pt-24 mx-auto max-w-7xl">
                 <HeaderCars/>
             </div>
             <div className="dark:bg-black">
