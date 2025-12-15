@@ -7,6 +7,7 @@ import { z } from "zod"
 import {
     Form,
     FormControl,
+    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -16,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { formSchema } from "./FormAddCar.form"
 import { Select, SelectContent, SelectItem, SelectValue,} from "@/components/ui/select"
+import { log } from "console"
 import { SelectTrigger } from "@/components/ui/select"
 import { useState } from "react"
 import { UploadButton } from "@/utils/uploadthing";
@@ -222,6 +224,34 @@ export default function FormAddCar(props: FormAddCarProps) {
                 </FormItem>
                 )}
                 />
+            <FormField
+                control={form.control}
+                name="techSheetPdf"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>Ficha técnica (PDF)</FormLabel>
+                    <FormControl>
+                        {form.watch("techSheetPdf") ? (
+                        <p className="text-sm text-green-600">PDF cargado correctamente</p>
+                        ) : (
+                        <UploadButton
+                            endpoint="techSheet"
+                            onClientUploadComplete={(res) => {
+                            form.setValue("techSheetPdf", res?.[0].url);
+                            }}
+                            onUploadError={(error: Error) => {
+                            console.error(error);
+                            toast.error("Error subiendo el PDF");
+                            }}
+                            className="rounded-lg bg-slate-600/20 text-slate-800 outline-dotted outline-3"
+                        />
+                        )}
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
+
             <FormField
                 control={form.control}
                 name="priceDay"

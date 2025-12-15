@@ -21,6 +21,7 @@ model Car {
   engine String @db.Text
   type String @db.Text
   isPublish Boolean?
+  techSheetPdf String?  @db.Text
 
   oders Order []
 

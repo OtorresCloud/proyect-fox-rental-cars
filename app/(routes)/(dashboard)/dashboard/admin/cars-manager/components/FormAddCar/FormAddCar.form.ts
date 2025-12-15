@@ -10,5 +10,6 @@ export const formSchema = z.object({
     type: z.string().min(2).max(50),
     priceDay: z.string().min(2).max(50),
     isPublish: z.boolean(),
+    techSheetPdf: z.string().optional(),
 })
 
