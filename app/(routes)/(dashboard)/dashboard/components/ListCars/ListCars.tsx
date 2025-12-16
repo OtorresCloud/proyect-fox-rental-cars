@@ -34,12 +34,12 @@ export default function ListCars(props:ListCarsProps) {
                 return (
                     <div
                         key={id}
-                       className="rounded-xl
-bg-white dark:bg-black
-border border-gray-200 dark:border-white/10
-overflow-hidden flex flex-col
-shadow-none
-transition-colors"
+                        className="rounded-xl
+                                bg-white dark:bg-black
+                                        border border-gray-200 dark:border-white/10
+                                overflow-hidden flex flex-col
+                                                    shadow-none
+                                transition-colors"
 
                     >
                         {/* Imagen con badge de tipo */}
@@ -110,6 +110,17 @@ transition-colors"
                             {/* Botones */}
                             <div className="mt-1 flex justify-between items-center gap-2">
                                 <ModalAddReservation car={car} />
+                                {car.techSheetPdf && (
+                                    <a
+                                        href={car.techSheetPdf}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition -ml-2"
+                                        title="Descargar ficha técnica"
+                                    >
+                                        <Download className="w-5 h-5" > </Download> 
+                                    </a>
+                                )}
                             </div>
                         </div>
                     </div>

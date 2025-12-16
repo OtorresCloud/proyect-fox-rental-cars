@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Car } from "@prisma/client";
 import Image from "next/image";
-import { Fuel, Gauge, Gem, Users, Wrench, Heart } from "lucide-react";
+import { Fuel, Gauge, Gem, Users, Wrench, Heart, Download } from "lucide-react";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 import { useLovedCars } from "@/hooks/use-loved-cars";
 import Link from "next/link";
@@ -139,20 +139,38 @@ return (
                     </p>
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 flex items-center gap-2">
                     {userId ? (
-                    <ModalAddReservation car={car} />
+                        <>
+                        <div className="flex-1">
+                            <ModalAddReservation car={car} />
+                        </div>
+
+                        {car.techSheetPdf && (
+                            <a
+                            href={car.techSheetPdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded border border-gray-300 dark:border-white/10 
+                                        hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+                            title="Descargar ficha técnica"
+                            >
+                            <Download className="w-5 h-5" />
+                            </a>
+                        )}
+                        </>
                     ) : (
-                    <Link href="/sign-in">
+                        <Link href="/sign-in" className="w-full">
                         <Button
-                        variant="outline"
-                        className="w-full bg-white dark:bg-white/5 border-gray-300 dark:border-white/10 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10"
+                            variant="outline"
+                            className="w-full bg-white dark:bg-white/5 border-gray-300 dark:border-white/10 
+                                    text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-white/10"
                         >
-                        Inicia sesión para reservar
+                            Inicia sesión para reservar
                         </Button>
-                    </Link>
+                        </Link>
                     )}
-                </div>
+                    </div>
                 </div>
             </div>
             );

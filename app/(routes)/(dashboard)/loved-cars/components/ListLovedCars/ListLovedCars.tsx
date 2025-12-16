@@ -2,7 +2,7 @@
 
 import { useLovedCars } from "@/hooks/use-loved-cars";
 import { Car } from "@prisma/client";
-import { Fuel, Gauge, Gem, Heart, Users, Wrench } from "lucide-react";
+import { Download, Fuel, Gauge, Gem, Heart, Users, Wrench } from "lucide-react";
 import Image from "next/image";
 import { ModalAddReservation } from "@/components/Shared/ModalAddReservation";
 import { Button } from "@/components/ui/button";
@@ -106,6 +106,17 @@ return (
                 {/* Botón */}
                     <div className="mt-2 flex justify-between items-center gap-2">
                         <ModalAddReservation car={car} />
+                        {car.techSheetPdf && (
+                                    <a
+                                        href={car.techSheetPdf}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition -ml-2"
+                                        title="Descargar ficha técnica"
+                                    >
+                                        <Download className="w-5 h-5" > </Download> 
+                                    </a>
+                                )}
                     </div>
                     </div>
                 </div>
