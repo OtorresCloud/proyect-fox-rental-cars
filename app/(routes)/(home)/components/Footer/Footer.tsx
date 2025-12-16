@@ -18,13 +18,13 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-white text-black">
+    <footer className=" dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Columna 1: Información de la Empresa */}
           <div>
-            <h3 className="text-black text-xl font-bold mb-4">Fox Rental Cars</h3>
+            <h3 className=" text-xl font-bold mb-4">Fox Rental Cars</h3>
             <p className="text-sm mb-4">
               Tu mejor opción para alquilar vehículos de calidad. Experiencia confiable y servicio excepcional.
             </p>
@@ -46,7 +46,7 @@ export function Footer() {
 
           {/* Columna 2: Enlaces Rápidos */}
           <div>
-            <h3 className="text-black text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+            <h3 className=" text-lg font-semibold mb-4">Enlaces Rápidos</h3>
             <ul className="space-y-2">
               <li>
                 <button 
@@ -85,7 +85,7 @@ export function Footer() {
 
           {/* Columna 3: Servicios */}
           <div>
-            <h3 className="text-black text-lg font-semibold mb-4">Nuestros Servicios</h3>
+            <h3 className="text-lg font-semibold mb-4">Nuestros Servicios</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/cars" className="text-sm hover:text-gray-600 transition-colors">
@@ -116,7 +116,7 @@ export function Footer() {
           </div>
           {/* Columna 4: Legal y Redes Sociales */}
           <div>
-            <h3 className="text-black text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 mb-6">
               <li>
                 <Link href="/terminos" className="text-sm hover:text-gray-600 transition-colors">
@@ -141,7 +141,7 @@ export function Footer() {
             </ul>
 
             {/* Redes Sociales */}
-            <h3 className="text-black text-lg font-semibold mb-4">Síguenos</h3>
+            <h3 className=" text-lg font-semibold mb-4">Síguenos</h3>
             <div className="flex gap-4">
               <Link 
                 href="https://facebook.com" 
@@ -188,9 +188,9 @@ export function Footer() {
             <div className="flex gap-4 text-sm">
               <span>Aceptamos:</span>
               <div className="flex gap-2">
-                <span className="px-2 py-1 bg-gray-200 rounded text-xs">VISA</span>
-                <span className="px-2 py-1 bg-gray-200 rounded text-xs">Mastercard</span>
-                <span className="px-2 py-1 bg-gray-200 rounded text-xs">PayPal</span>
+                <span className="px-2 py-1  rounded text-xs">VISA</span>
+                <span className="px-2 py-1  rounded text-xs">Mastercard</span>
+                <span className="px-2 py-1 rounded text-xs">PayPal</span>
               </div>
             </div>
           </div>
